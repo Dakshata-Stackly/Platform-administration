@@ -13,6 +13,10 @@ import {
   RefreshCw,
 } from "lucide-react";
 
+interface DashboardProps {
+  setCurrentPage: (page: string) => void;
+}
+
 const stats = [
   {
     title: "ORGANIZATIONS",
@@ -107,7 +111,7 @@ const organizationItems = [
   },
 ];
 
-export default function Dashboard() {
+export default function Dashboard({ setCurrentPage }: DashboardProps) {
   return (
     <main className="dashboard">
       <div className="page-header">
@@ -160,7 +164,15 @@ export default function Dashboard() {
             const Icon = item.icon;
 
             return (
-              <div className="management-card" key={item.title}>
+              <div
+                className="management-card"
+                key={item.title}
+                onClick={() => {
+                  if (item.title === "Global Dashboard") {
+                    setCurrentPage("Global Dashboard");
+                  }
+                }}
+              >
                 <div className="management-icon">
                   <Icon size={21} />
                 </div>

@@ -20,7 +20,6 @@ const superAdminItems = [
   {
     label: "Platform Administration",
     icon: Globe,
-    active: true,
   },
   {
     label: "Global Dashboard",
@@ -59,7 +58,15 @@ const organizationItems = [
   },
 ];
 
-export default function Sidebar() {
+interface SidebarProps {
+  currentPage: string;
+  setCurrentPage: (page: string) => void;
+}
+
+export default function Sidebar({
+  currentPage,
+  setCurrentPage,
+}: SidebarProps) {
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">
@@ -78,7 +85,10 @@ export default function Sidebar() {
           return (
             <div
               key={item.label}
-              className={`nav-item ${item.active ? "active" : ""}`}
+              className={`nav-item ${
+                currentPage === item.label ? "active" : ""
+              }`}
+              onClick={() => setCurrentPage(item.label)}
             >
               <Icon size={17} />
               <span>{item.label}</span>
@@ -92,7 +102,13 @@ export default function Sidebar() {
           const Icon = item.icon;
 
           return (
-            <div className="nav-item" key={item.label}>
+            <div
+              className={`nav-item ${
+                currentPage === item.label ? "active" : ""
+              }`}
+              key={item.label}
+              onClick={() => setCurrentPage(item.label)}
+            >
               <Icon size={17} />
               <span>{item.label}</span>
             </div>
@@ -116,7 +132,7 @@ export default function Sidebar() {
           <div className="profile-avatar">D</div>
 
           <div>
-            <strong>Dakshata </strong>
+            <strong>Dakshata</strong>
             <small>Super Admin</small>
           </div>
         </div>
