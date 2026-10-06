@@ -3,7 +3,6 @@ import {
   Settings,
   FileText,
   Activity,
-  UserPlus,
   Eye,
   TrendingUp,
   AlertTriangle,
