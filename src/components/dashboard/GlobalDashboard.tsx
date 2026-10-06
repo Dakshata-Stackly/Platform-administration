@@ -69,24 +69,28 @@ const activities = [
     description: "by Admin users",
     time: "10 min ago",
     icon: AlertTriangle,
+    type: "warning",
   },
   {
     title: "License Updated",
     description: "by Admin users.",
     time: "1 hour ago",
     icon: AlertTriangle,
+    type: "warning",
   },
   {
     title: "User Added",
     description: "Superadmin granted access to monitoring module.",
     time: "3 hours ago",
     icon: Info,
+    type: "info",
   },
   {
     title: "Backup Completed",
     description: "Daily snapshot of primary database cluster successful.",
     time: "Yesterday",
     icon: CheckCircle2,
+    type: "success",
   },
 ];
 
@@ -96,7 +100,9 @@ export default function GlobalDashboard() {
       <div className="global-page-header">
         <div>
           <div className="breadcrumb">
-            Platform Administration <span>/</span> <strong>Global Dashboard</strong>
+            Platform Administration
+            <span>/</span>
+            <strong>Global Dashboard</strong>
           </div>
 
           <h1>Global Dashboard</h1>
@@ -109,12 +115,12 @@ export default function GlobalDashboard() {
 
         <div className="global-header-actions">
           <button className="global-refresh-button">
-            <RefreshCw size={15} />
+            <RefreshCw size={14} />
             Refresh
           </button>
 
           <button className="export-button">
-            <Download size={15} />
+            <Download size={14} />
             Export report
           </button>
         </div>
@@ -133,7 +139,7 @@ export default function GlobalDashboard() {
                   <span>{stat.title}</span>
 
                   <div className="global-stat-icon">
-                    <Icon size={18} />
+                    <Icon size={17} />
                   </div>
                 </div>
 
@@ -156,7 +162,7 @@ export default function GlobalDashboard() {
             return (
               <div className="quick-navigation-card" key={item.title}>
                 <div className="quick-navigation-icon">
-                  <Icon size={20} />
+                  <Icon size={19} />
                 </div>
 
                 <div>
@@ -184,44 +190,56 @@ export default function GlobalDashboard() {
           <div className="health-item">
             <div className="health-label">
               <span>CPU Usage</span>
-              <strong>67%</strong>
+              <strong className="health-warning">67%</strong>
             </div>
 
             <div className="health-progress">
-              <span style={{ width: "67%" }} />
+              <span
+                className="cpu-progress"
+                style={{ width: "67%" }}
+              />
             </div>
           </div>
 
           <div className="health-item">
             <div className="health-label">
               <span>Memory Utilization</span>
-              <strong>54%</strong>
+              <strong className="health-success">54%</strong>
             </div>
 
             <div className="health-progress">
-              <span style={{ width: "54%" }} />
+              <span
+                className="memory-progress"
+                style={{ width: "54%" }}
+              />
             </div>
           </div>
 
           <div className="health-item">
             <div className="health-label">
               <span>Disk I/O</span>
-              <strong>32%</strong>
+              <strong className="health-success">32%</strong>
             </div>
 
             <div className="health-progress">
-              <span style={{ width: "32%" }} />
+              <span
+                className="disk-progress"
+                style={{ width: "32%" }}
+              />
             </div>
           </div>
 
           <div className="health-item">
             <div className="health-label">
               <span>Network Bandwidth</span>
-              <strong>78%</strong>
+              <strong className="health-warning">78%</strong>
             </div>
 
             <div className="health-progress">
-              <span style={{ width: "78%" }} />
+              <span
+                className="network-progress"
+                style={{ width: "78%" }}
+              />
             </div>
           </div>
         </div>
@@ -276,27 +294,165 @@ export default function GlobalDashboard() {
 
               <polyline
                 className="chart-line operational-line"
-                points="0,112 75,100 150,104 225,76 300,78 375,88 450,70 520,62"
+                points="0,105 74,91 148,95 222,70 296,71 370,81 444,66 520,60"
               />
 
               <polyline
                 className="chart-line degraded-line"
-                points="0,148 75,134 150,130 225,118 300,132 375,136 450,134 520,108"
+                points="0,148 74,133 148,130 222,116 296,129 370,136 444,134 520,111"
               />
 
               <polyline
                 className="chart-line down-line"
-                points="0,182 75,174 150,175 225,164 300,164 375,164 450,164 520,158"
+                points="0,183 74,175 148,176 222,165 296,165 370,165 444,165 520,159"
               />
 
-              <circle cx="0" cy="112" r="4" />
-              <circle cx="75" cy="100" r="4" />
-              <circle cx="150" cy="104" r="4" />
-              <circle cx="225" cy="76" r="4" />
-              <circle cx="300" cy="78" r="4" />
-              <circle cx="375" cy="88" r="4" />
-              <circle cx="450" cy="70" r="4" />
-              <circle cx="520" cy="62" r="4" />
+              <circle
+                className="operational-point"
+                cx="0"
+                cy="105"
+                r="4"
+              />
+              <circle
+                className="operational-point"
+                cx="74"
+                cy="91"
+                r="4"
+              />
+              <circle
+                className="operational-point"
+                cx="148"
+                cy="95"
+                r="4"
+              />
+              <circle
+                className="operational-point"
+                cx="222"
+                cy="70"
+                r="4"
+              />
+              <circle
+                className="operational-point"
+                cx="296"
+                cy="71"
+                r="4"
+              />
+              <circle
+                className="operational-point"
+                cx="370"
+                cy="81"
+                r="4"
+              />
+              <circle
+                className="operational-point"
+                cx="444"
+                cy="66"
+                r="4"
+              />
+              <circle
+                className="operational-point"
+                cx="520"
+                cy="60"
+                r="4"
+              />
+
+              <circle
+                className="degraded-point"
+                cx="0"
+                cy="148"
+                r="4"
+              />
+              <circle
+                className="degraded-point"
+                cx="74"
+                cy="133"
+                r="4"
+              />
+              <circle
+                className="degraded-point"
+                cx="148"
+                cy="130"
+                r="4"
+              />
+              <circle
+                className="degraded-point"
+                cx="222"
+                cy="116"
+                r="4"
+              />
+              <circle
+                className="degraded-point"
+                cx="296"
+                cy="129"
+                r="4"
+              />
+              <circle
+                className="degraded-point"
+                cx="370"
+                cy="136"
+                r="4"
+              />
+              <circle
+                className="degraded-point"
+                cx="444"
+                cy="134"
+                r="4"
+              />
+              <circle
+                className="degraded-point"
+                cx="520"
+                cy="111"
+                r="4"
+              />
+
+              <circle
+                className="down-point"
+                cx="0"
+                cy="183"
+                r="4"
+              />
+              <circle
+                className="down-point"
+                cx="74"
+                cy="175"
+                r="4"
+              />
+              <circle
+                className="down-point"
+                cx="148"
+                cy="176"
+                r="4"
+              />
+              <circle
+                className="down-point"
+                cx="222"
+                cy="165"
+                r="4"
+              />
+              <circle
+                className="down-point"
+                cx="296"
+                cy="165"
+                r="4"
+              />
+              <circle
+                className="down-point"
+                cx="370"
+                cy="165"
+                r="4"
+              />
+              <circle
+                className="down-point"
+                cx="444"
+                cy="165"
+                r="4"
+              />
+              <circle
+                className="down-point"
+                cx="520"
+                cy="159"
+                r="4"
+              />
             </svg>
 
             <div className="chart-x-labels">
@@ -319,30 +475,42 @@ export default function GlobalDashboard() {
             <button>View all alerts</button>
           </div>
 
-          <div className="security-alert warning">
-            <AlertTriangle size={18} />
+          <div className="security-alert warning-alert">
+            <div className="security-alert-icon">
+              <AlertTriangle size={16} />
+            </div>
+
             <div>
               <strong>High CPU Usage</strong>
               <p>Database server CPU usage is high</p>
             </div>
+
             <span>1 hour ago</span>
           </div>
 
           <div className="security-alert info-alert">
-            <Activity size={18} />
+            <div className="security-alert-icon">
+              <Activity size={16} />
+            </div>
+
             <div>
               <strong>Storage Threshold</strong>
               <p>Storage utilization reached 80%</p>
             </div>
+
             <span>2 hour ago</span>
           </div>
 
           <div className="security-alert registration-alert">
-            <UserPlus size={18} />
+            <div className="security-alert-icon">
+              <Info size={16} />
+            </div>
+
             <div>
               <strong>New Tenant Registration</strong>
               <p>Techcorp solutions registered</p>
             </div>
+
             <span>2 hour ago</span>
           </div>
         </div>
@@ -358,9 +526,12 @@ export default function GlobalDashboard() {
               const Icon = activity.icon;
 
               return (
-                <div className="activity-item" key={activity.title}>
+                <div
+                  className={`activity-item ${activity.type}`}
+                  key={activity.title}
+                >
                   <div className="activity-icon">
-                    <Icon size={17} />
+                    <Icon size={15} />
                   </div>
 
                   <div className="activity-content">
