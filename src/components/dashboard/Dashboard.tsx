@@ -171,6 +171,10 @@ export default function Dashboard({ setCurrentPage }: DashboardProps) {
                   if (item.title === "Global Dashboard") {
                     setCurrentPage("Global Dashboard");
                   }
+
+                  if (item.title === "Platform Configuration") {
+                    setCurrentPage("Platform Configuration");
+                  }
                 }}
               >
                 <div className="management-icon">

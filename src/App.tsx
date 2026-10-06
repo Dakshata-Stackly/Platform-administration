@@ -4,6 +4,7 @@ import Sidebar from "./components/layout/Sidebar";
 import Header from "./components/layout/Header";
 import Dashboard from "./components/dashboard/Dashboard";
 import GlobalDashboard from "./components/dashboard/GlobalDashboard";
+import PlatformConfiguration from "./components/dashboard/PlatformConfiguration";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("Platform Administration");
@@ -20,6 +21,8 @@ function App() {
 
         {currentPage === "Global Dashboard" ? (
           <GlobalDashboard />
+        ) : currentPage === "Platform Configuration" ? (
+          <PlatformConfiguration />
         ) : (
           <Dashboard setCurrentPage={setCurrentPage} />
         )}
