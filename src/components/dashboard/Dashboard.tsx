@@ -175,6 +175,14 @@ export default function Dashboard({ setCurrentPage }: DashboardProps) {
                   if (item.title === "Platform Configuration") {
                     setCurrentPage("Platform Configuration");
                   }
+
+                  if (item.title === "Feature Management") {
+                    setCurrentPage("Feature Management");
+                  }
+
+                  if (item.title === "License Management") {
+                    setCurrentPage("License Management");
+                  }
                 }}
               >
                 <div className="management-icon">

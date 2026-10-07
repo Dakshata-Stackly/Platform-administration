@@ -5,6 +5,8 @@ import Header from "./components/layout/Header";
 import Dashboard from "./components/dashboard/Dashboard";
 import GlobalDashboard from "./components/dashboard/GlobalDashboard";
 import PlatformConfiguration from "./components/dashboard/PlatformConfiguration";
+import FeatureManagement from "./components/dashboard/FeatureManagement";
+import LicenseManagement from "./components/dashboard/LicenseManagement";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("Platform Administration");
@@ -23,6 +25,10 @@ function App() {
           <GlobalDashboard />
         ) : currentPage === "Platform Configuration" ? (
           <PlatformConfiguration />
+        ) : currentPage === "Feature Management" ? (
+          <FeatureManagement />
+        ) : currentPage === "License Management" ? (
+          <LicenseManagement />
         ) : (
           <Dashboard setCurrentPage={setCurrentPage} />
         )}
