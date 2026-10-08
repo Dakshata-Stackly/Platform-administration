@@ -1,12 +1,15 @@
 import { useState } from "react";
 import "./App.css";
+
 import Sidebar from "./components/layout/Sidebar";
 import Header from "./components/layout/Header";
+
 import Dashboard from "./components/dashboard/Dashboard";
 import GlobalDashboard from "./components/dashboard/GlobalDashboard";
 import PlatformConfiguration from "./components/dashboard/PlatformConfiguration";
 import FeatureManagement from "./components/dashboard/FeatureManagement";
 import LicenseManagement from "./components/dashboard/LicenseManagement";
+import PlatformBranding from "./components/dashboard/PlatformBranding";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("Platform Administration");
@@ -21,7 +24,9 @@ function App() {
       <div className="main-area">
         <Header />
 
-        {currentPage === "Global Dashboard" ? (
+        {currentPage === "Platform Branding" ? (
+          <PlatformBranding />
+        ) : currentPage === "Global Dashboard" ? (
           <GlobalDashboard />
         ) : currentPage === "Platform Configuration" ? (
           <PlatformConfiguration />

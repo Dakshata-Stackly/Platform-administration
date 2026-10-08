@@ -176,6 +176,10 @@ export default function Dashboard({ setCurrentPage }: DashboardProps) {
                     setCurrentPage("Platform Configuration");
                   }
 
+                  if (item.title === "Platform Branding") {
+                    setCurrentPage("Platform Branding");
+                  }
+
                   if (item.title === "Feature Management") {
                     setCurrentPage("Feature Management");
                   }
